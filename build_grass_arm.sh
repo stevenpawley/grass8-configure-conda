@@ -5,13 +5,13 @@ export CC=$PREFIX/bin/clang
 export CXX=$PREFIX/bin/clang++
 
 export LDFLAGS="-Wl,-rpath,$PREFIX/lib"
-export CFLAGS="-O2 -pipe -arch x86_64 -DGL_SILENCE_DEPRECATION"
-export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch x86_64"
+export CFLAGS="-O2 -pipe -arch arm64 -DGL_SILENCE_DEPRECATION"
+export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch arm64"
 
 ./configure \
     --with-macosx-sdk=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk \
     --enable-64bit \
-    --with-macosx-archs="x86_64" \
+    --with-macosx-archs="arm64" \
     --with-opengl=aqua \
     --prefix=$PREFIX \
     --with-freetype \
@@ -30,9 +30,7 @@ export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch x86_64"
     --with-png-libs=$PREFIX/lib \
     --with-tiff-includes=$PREFIX/include \
     --with-tiff-libs=$PREFIX/lib \
-    --with-postgres=yes \
-    --with-postgres-includes=$PREFIX/include \
-    --with-postgres-libs=$PREFIX/lib \
+    --without-postgres \
     --without-mysql \
     --with-sqlite \
     --with-sqlite-libs=$PREFIX/lib \
@@ -61,8 +59,6 @@ export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch x86_64"
     --with-nls \
     --with-libs=$PREFIX/lib \
     --with-includes=$PREFIX/include \
-    --with-pdal=$PREFIX/bin/pdal-config \
-    --with-pdal-libs=$PREFIX/lib \
     --with-readline \
     --with-readline-includes=$PREFIX/include/readline \
     --with-readline-libs=$PREFIX/lib
