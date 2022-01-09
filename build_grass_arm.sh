@@ -1,3 +1,6 @@
+export SDK="/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk"
+export CONDA_BUILD_SYSROOT=$SDK
+
 export PREFIX=$(python3 -c 'import sys; print(sys.prefix)')
 export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/etc:/usr/lib
 export GRASS_PYTHON=$(which pythonw)
@@ -8,8 +11,9 @@ export LDFLAGS="-Wl,-rpath,$PREFIX/lib"
 export CFLAGS="-O2 -pipe -arch arm64 -DGL_SILENCE_DEPRECATION"
 export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch arm64"
 
+# --with-macosx-sdk=$SDK \
+
 ./configure \
-    --with-macosx-sdk=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk \
     --enable-64bit \
     --with-macosx-archs="arm64" \
     --with-opengl=aqua \
@@ -52,7 +56,7 @@ export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch arm64"
     --with-blas \
     --with-blas-libs=$PREFIX/lib \
     --with-blas-includes=$PREFIX/include \
-    --with-lapack
+    --with-lapack \
     --with-lapack-includes=$PREFIX/include \
     --with-lapack-libs=$PREFIX/lib \
     --with-netcdf=$PREFIX/bin/nc-config \
