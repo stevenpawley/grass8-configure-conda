@@ -54,7 +54,7 @@ export CXXFLAGS="-O2 -pipe -stdlib=libc++ -arch x86_64"
     --with-blas \
     --with-blas-libs=$PREFIX/lib \
     --with-blas-includes=$PREFIX/include \
-    --with-lapack
+    --with-lapack \
     --with-lapack-includes=$PREFIX/include \
     --with-lapack-libs=$PREFIX/lib \
     --with-netcdf=$PREFIX/bin/nc-config \
